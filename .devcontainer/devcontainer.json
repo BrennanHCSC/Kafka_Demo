@@ -1,0 +1,16 @@
+{
+	"name": "My Container with Kafka",
+	"dockerComposeFile": "./docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	"forwardPorts": [8888],
+	"customizations": {
+	  "vscode": {
+		"extensions": [
+		  "ms-python.python",
+		  "ms-toolsai.jupyter"
+		]
+	  }
+	}
+  }
+  
