@@ -62,13 +62,3 @@ To run the consumer script in another terminal session:
 ```bash
 python consumer.py
 ```
-
-## Troubleshooting
-
-- **Containers not starting**: Ensure that Docker daemon is running and you have the necessary permissions to start containers.
-- **Jupyter notebook access issues**: Verify the Docker container logs for any errors or warnings and ensure the port `8888` is not being used by another application.
-- **Kafka connection errors**: Ensure that the Kafka broker is up and running, and the `bootstrap.servers` in your producer and consumer scripts match the Kafka broker address.
-
-## Conclusion
-
-This guide provides a basic overview to get started with the Kafka Python demo. You can modify the producer and consumer scripts to experiment with different Kafka functionalities. Happy coding!
