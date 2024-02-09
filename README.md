@@ -1,4 +1,4 @@
-# Kafka Python Demo README
+# Kafka Python Demo
 
 This README guide is designed to help you quickly get started with the Kafka Python demo using Docker and Visual Studio Code.
 
@@ -10,7 +10,7 @@ To build and start the Docker containers, follow these steps:
 
 - Open Visual Studio Code.
 - Open the integrated terminal:
-  - Press `Ctrl + `` (backtick) to open the terminal.
+  - Press `Ctrl + `` (backtick) to open the terminal. You can also get to termina via the 'Terminal' tab at the top, followed by 'New Terminal'.
 - Run the following command to build the containers:
 
 ```bash
@@ -44,7 +44,20 @@ Inside the application container's terminal:
 python producer.py
 ```
 
+This will produce a message and send it to Kafka. You should see output similar to:
+```mathematica
+Message produced: test-topic [0] @ 0
+Message sent to Kafka
+```
+
 - Run the consumer script:
 ```bash
 python consumer.py
 ```
+
+You should see output similar to:
+```mathematica
+Received message: Hello, World!
+```
+
+Congratulations! You've successfully produced and consumed messages using Kafka Python scripts.
