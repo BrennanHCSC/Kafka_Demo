@@ -2,14 +2,43 @@ version: '3'
 services:
   app:
     build:
-      context: ..
+      context: ../services/app_service
       dockerfile: Dockerfile
     volumes:
-      - ..:/workspace:cached
+      - ../services/app_service:/workspace
     ports:
-      - "8888:8888"  # Jupyter port
+      - "8888:8888"
     depends_on:
       - kafka
+  
+  nlp-service:
+    build:
+      context: ../services/nlp_service
+      dockerfile: Dockerfile
+    volumes:
+      - ../services/nlp_service:/workspace
+    depends_on:
+      - kafka
+
+  trigger-service:
+    build:
+      context: ../services/trigger_service
+      dockerfile: Dockerfile
+    volumes:
+      - ../services/trigger_service:/workspace
+    depends_on:
+      - kafka
+
+
+  response-listener-service:
+    build:
+      context: ../services/response_listener
+      dockerfile: Dockerfile
+    volumes:
+      - ../services/response_listener:/workspace
+    depends_on:
+      - kafka
+
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -31,3 +60,4 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
