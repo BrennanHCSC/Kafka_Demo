@@ -80,7 +80,7 @@ Message sent to Kafka
 exit
 ```
 
-### 3. Testing Consumer Script
+### 4. Testing Consumer Script
 
 Access the consumer container's terminal:
 
