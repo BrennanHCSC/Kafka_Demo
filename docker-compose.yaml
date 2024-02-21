@@ -26,3 +26,8 @@ services:
      depends_on: 
       - kafka   
      tty: true
+  nlp:
+     build: ./nlp-service
+     depends_on:
+      - kafka
+     tty: true
