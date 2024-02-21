@@ -1,6 +1,7 @@
 # Kafka Python Demo
 
-This README guide is designed to help you quickly get started with the Kafka Python demo using Docker and Visual Studio Code.
+This branch separates the demo into multiple containers.
+Producer sents messages to Kafka. Nlp modifies Kafka messages by doing a simple NLP task (reversing strings). Consumer simply recieves messages.
 
 ## Getting Started
 
@@ -11,17 +12,12 @@ To build and start the Docker containers, follow these steps:
 - Open Visual Studio Code.
 - Open the integrated terminal:
   - Press `Ctrl + `` (backtick) to open the terminal. You can also get to termina via the 'Terminal' tab at the top, followed by 'New Terminal'.
-- Run the following command to build the containers:
+- Run the following command to build and start the containers:
 
 ```bash
-docker-compose -f .devcontainer/docker-compose.yml build
+docker-compose up --build -d 
 ```
 
-- Then, start the containers:
-
-```bash
-docker-compose -f .devcontainer/docker-compose.yml up -d
-```
 
 ### 2. Testing the Producer Script
 
@@ -30,7 +26,7 @@ Access the producer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose -f .devcontainer/docker-compose.yml exec producer bash
+docker-compose docker-compose exec producer bash
 ```
 Inside the producer container's terminal:
 
@@ -58,7 +54,7 @@ Access the NLP container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose -f .devcontainer/docker-compose.yml exec nlp bash
+docker-compose docker-compose exec nlp bash
 ```
 Inside the NLP container's terminal:
 
@@ -87,7 +83,7 @@ Access the consumer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose -f .devcontainer/docker-compose.yml exec consumer bash
+docker-compose docker-compose exec consumer bash
 ```
 Inside the consumer container's terminal:
 
