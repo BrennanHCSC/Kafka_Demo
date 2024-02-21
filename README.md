@@ -23,20 +23,16 @@ docker-compose -f .devcontainer/docker-compose.yml build
 docker-compose -f .devcontainer/docker-compose.yml up -d
 ```
 
-### 2. Accessing the Application Container
+### 2. Testing the Producer Script
 
-To access the application container's terminal:
+Access the producer container's terminal:
 
 - Run the following command in the terminal:
 
 ```bash
-docker-compose -f .devcontainer/docker-compose.yml exec app bash
+docker-compose -f .devcontainer/docker-compose.yml exec producer bash
 ```
-
-
-### 3. Testing Producer and Consumer Scripts
-
-Inside the application container's terminal:
+Inside the producer container's terminal:
 
 - Run the producer script:
 
@@ -50,14 +46,60 @@ Message produced: test-topic [0] @ 0
 Message sent to Kafka
 ```
 
+- Exit the producer container
+```bash
+exit
+```
+
+### 3. Testing NLP Script
+
+Access the NLP container's terminal:
+
+- Run the following command in the terminal:
+
+```bash
+docker-compose -f .devcontainer/docker-compose.yml exec nlp bash
+```
+Inside the NLP container's terminal:
+
+- Run the NLP script:
+
+```bash
+python nlp.py
+```
+
+This will produce a message and send it to Kafka. You should see output similar to:
+```mathematica
+Reversed message: !dlroW ,olleH
+Message produced: test-topic [0] @ 0
+Message sent to Kafka
+```
+
+- Exit the NLP container
+```bash
+exit
+```
+
+### 3. Testing Consumer Script
+
+Access the consumer container's terminal:
+
+- Run the following command in the terminal:
+
+```bash
+docker-compose -f .devcontainer/docker-compose.yml exec consumer bash
+```
+Inside the consumer container's terminal:
+
 - Run the consumer script:
+
 ```bash
 python consumer.py
 ```
 
 You should see output similar to:
 ```mathematica
-Received message: Hello, World!
+Received message: Reversed message: !dlroW ,olleH
 ```
 
 Congratulations! You've successfully produced and consumed messages using Kafka Python scripts.
