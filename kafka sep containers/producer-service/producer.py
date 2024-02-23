@@ -1,9 +1,9 @@
-from confluent_kafka import Producer
+from kafka-cluster import Producer
 import time
 
 # Configuration for connecting to Kafka
 config = {
-    'bootstrap.servers': 'kafka:9092'  # Assumes Kafka is accessible at this address
+    'bootstrap.servers': 'kafka-cluster:9092'  # Assumes Kafka is accessible at this address
 }
 
 # Create a Producer instance

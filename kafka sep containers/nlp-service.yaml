@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.26.0 (40646f47)
   creationTimestamp: null
   labels:
-    io.kompose.service: zookeeper
-  name: zookeeper
+    io.kompose.service: nlp
+  name: nlp
 spec:
   ports:
-    - name: "2181"
-      port: 2181
-      targetPort: 2181
+    - name: "9095"
+      port: 9095
+      targetPort: 9095
   selector:
-    io.kompose.service: zookeeper
+    io.kompose.service: nlp
 status:
   loadBalancer: {}

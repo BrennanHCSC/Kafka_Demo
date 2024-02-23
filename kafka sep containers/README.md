@@ -15,9 +15,15 @@ To build and start the Docker containers, follow these steps:
 - Run the following command to build and start the containers:
 
 ```bash
-docker-compose up --build -d 
-```
+kubectl apply -f consumer-service.yaml,kafka-service.yaml,nlp-service.yaml,producer-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
 
+kubectl delete -f consumer-service.yaml,kafka-service.yaml,nlp-service.yaml,producer-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
+```
+- Run the following command to see which containers are running:
+
+```bash
+kubectl get pods
+```
 
 ### 2. Testing the Producer Script
 
@@ -26,7 +32,7 @@ Access the producer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose docker-compose exec producer bash
+kubectl exec --stdin --tty < Producer name > -- /bin/bash 
 ```
 Inside the producer container's terminal:
 
