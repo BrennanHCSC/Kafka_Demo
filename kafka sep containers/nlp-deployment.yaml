@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\windows\system32\kompose.exe convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: nlp
+  name: nlp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: nlp
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\windows\system32\kompose.exe convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: nlp
+    spec:
+      containers:
+        - image: nlp
+          name: nlp
+          resources: {}
+          tty: true
+      restartPolicy: Always
+status: {}
