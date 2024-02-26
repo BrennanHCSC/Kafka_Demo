@@ -26,7 +26,7 @@ Access the producer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose docker-compose exec producer bash
+docker-compose exec producer bash
 ```
 Inside the producer container's terminal:
 
@@ -54,7 +54,7 @@ Access the NLP container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose docker-compose exec nlp bash
+docker-compose exec nlp bash
 ```
 Inside the NLP container's terminal:
 
@@ -83,7 +83,7 @@ Access the consumer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose docker-compose exec consumer bash
+docker-compose exec consumer bash
 ```
 Inside the consumer container's terminal:
 
