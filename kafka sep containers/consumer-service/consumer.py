@@ -1,43 +1,31 @@
-from confluent_kafka import Consumer, KafkaError, KafkaException
+from confluent_kafka import Consumer, KafkaError
 from confluent_kafka.admin import AdminClient, NewTopic
 
 # Configuration for connecting to Kafka
 kafka_config = {
-    'bootstrap.servers': 'kafka:9092',  # Assumes Kafka is accessible at this address
-    'group.id': 'test-group',
+    'bootstrap.servers': 'kafka:9092',
+    'group.id': 'consumer-group',
     'auto.offset.reset': 'earliest'
 }
 
 # Create an AdminClient
 admin_client = AdminClient({'bootstrap.servers': kafka_config['bootstrap.servers']})
 
-# Define the topic to be created
-topic_name = 'test-topic'
-topic_config = {
-    'num_partitions': 1,
-    'replication_factor': 1
-}
+# Function to check and create topic
+def check_create_topic(topic_name):
+    topics = admin_client.list_topics().topics
+    if topic_name not in topics:
+        new_topic = NewTopic(topic_name, num_partitions=1, replication_factor=1)
+        admin_client.create_topics([new_topic])
 
-# Check if the topic exists
-metadata = admin_client.list_topics(timeout=10)
-if topic_name not in metadata.topics:
-    # Topic doesn't exist, so create it
-    topic = NewTopic(topic_name, **topic_config)
-    fs = admin_client.create_topics([topic])
-
-    # Block until the topic is created
-    for topic, f in fs.items():
-        try:
-            f.result()  # The result itself is None
-            print(f"Topic {topic} created")
-        except Exception as e:
-            print(f"Failed to create topic {topic}: {e}")
+# Check and create the 'nlp-topic'
+check_create_topic('nlp-topic')
 
 # Create a Consumer instance
 consumer = Consumer(**kafka_config)
 
-# Subscribe to the topic
-consumer.subscribe([topic_name])
+# Subscribe to the 'nlp-topic'
+consumer.subscribe(['nlp-topic'])
 
 try:
     while True:
@@ -53,7 +41,8 @@ try:
                 print(msg.error())
                 break
 
-        print(f"Received message: {msg.value().decode('utf-8')}")
+        # Print the processed message
+        print(f"Received processed message: {msg.value().decode('utf-8')}")
 except KeyboardInterrupt:
     print("Stopping consumer")
 finally:

@@ -5,6 +5,8 @@ RUN pip install kafka
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-WORKDIR /app 
+WORKDIR /app
 COPY nlp.py .
-RUN ["/bin/bash"]
+
+# Use CMD to run consumer.py automatically when the container starts
+CMD ["python", "./nlp.py"]
