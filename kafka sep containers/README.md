@@ -1,7 +1,8 @@
 # Kafka Python Demo
 
-This branch separates the demo into multiple containers.
-Producer sents messages to Kafka. Nlp modifies Kafka messages by doing a simple NLP task (reversing strings). Consumer simply recieves messages.
+This branch automates the flow of messages from producer -> nlp -> consumer.
+Producer sents messages to Kafka (which is a command-line argument by the user). Nlp modifies the message by doing a simple NLP task (reversing the message string). Consumer simply recieves messages and logs them.
+Nlp and consumer are always listening.
 
 ## Getting Started
 
@@ -26,19 +27,19 @@ Access the producer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-docker-compose docker-compose exec producer bash
+docker-compose exec producer bash
 ```
 Inside the producer container's terminal:
 
-- Run the producer script:
+- Now, you can run the producer script with a message as a command line argument. Replace <YourMessage> with the actual message you want to send:
 
 ```bash
-python producer.py
+python producer.py "<YourMessage>"
 ```
 
 This will produce a message and send it to Kafka. You should see output similar to:
 ```mathematica
-Message produced: test-topic [0] @ 0
+Message produced: <YourMessage> to topic test-topic [0] @ 0
 Message sent to Kafka
 ```
 
@@ -47,55 +48,19 @@ Message sent to Kafka
 exit
 ```
 
-### 3. Testing NLP Script
 
-Access the NLP container's terminal:
+### 3. Verifying Recieved Messages
 
-- Run the following command in the terminal:
+To ensure nlp and consumer are correctly receiving and processing messages, check their logs:
 
-```bash
-docker-compose docker-compose exec nlp bash
-```
-Inside the NLP container's terminal:
-
-- Run the NLP script:
+- To view nlp's logs, run the following command in the terminal:
 
 ```bash
-python nlp.py
+docker-compose logs nlp
 ```
 
-This will produce a message and send it to Kafka. You should see output similar to:
-```mathematica
-Reversed message: !dlroW ,olleH
-Message produced: test-topic [0] @ 0
-Message sent to Kafka
-```
-
-- Exit the NLP container
-```bash
-exit
-```
-
-### 4. Testing Consumer Script
-
-Access the consumer container's terminal:
-
-- Run the following command in the terminal:
+- To view consumer's logs, run the following command in the terminal:
 
 ```bash
-docker-compose docker-compose exec consumer bash
+docker-compose logs consumer
 ```
-Inside the consumer container's terminal:
-
-- Run the consumer script:
-
-```bash
-python consumer.py
-```
-
-You should see output similar to:
-```mathematica
-Received message: Reversed message: !dlroW ,olleH
-```
-
-Congratulations! You've successfully produced and consumed messages using Kafka Python scripts.
