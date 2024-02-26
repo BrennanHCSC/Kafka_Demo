@@ -1,5 +1,6 @@
 from confluent_kafka import Producer
 import time
+import sys  # Import the sys module to access command line arguments
 
 # Configuration for connecting to Kafka
 config = {
@@ -15,8 +16,15 @@ def acked(err, msg):
     else:
         print(f"Message produced: {msg.topic()} [{msg.partition()}] @ {msg.offset()}")
 
-# Produce a message
-producer.produce('test-topic', 'Hello, World!', callback=acked)
+# Check if a message is provided as a command line argument
+if len(sys.argv) > 1:
+    message = sys.argv[1]
+else:
+    print("No message provided, defaulting to 'Hello, World!'")
+    message = "Hello, World!"
+
+# Produce a message using the command line argument or default message
+producer.produce('test-topic', message, callback=acked)
 
 # Wait for any outstanding messages to be delivered
 producer.flush()
