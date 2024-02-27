@@ -6,7 +6,14 @@ Nlp and consumer are always listening.
 
 ## Getting Started
 
-### 1. Build and Start the Docker Containers
+### 1. Downloading LLM Model File
+
+To download and correctly place the model file:
+- Go to [this link](https://huggingface.co/TheBloke/phi-2-GGUF/blob/main/phi-2.Q8_0.gguf) and download the model file 'phi-2.Q8_0.gguf'.
+- Put the file into [kafka auto flow LLM/nlp-service/](kafka auto flow LLM/nlp-service/) directory.
+
+
+### 2. Build and Start the Docker Containers
 
 To build and start the Docker containers, follow these steps:
 
@@ -19,8 +26,7 @@ To build and start the Docker containers, follow these steps:
 docker-compose up --build -d 
 ```
 
-
-### 2. Testing the Producer Script
+### 3. Testing the Producer Script
 
 Access the producer container's terminal:
 
@@ -31,10 +37,10 @@ docker-compose exec producer bash
 ```
 Inside the producer container's terminal:
 
-- Now, you can run the producer script with a message as a command line argument. Replace <YourMessage> with the actual message you want to send:
+- Now, you can run the producer script with an LLM as a command line argument. Replace <YourPrompt> with the actual prompt you want to send:
 
 ```bash
-python producer.py "<YourMessage>"
+python producer.py "<YourPrompt>"
 ```
 
 This will produce a message and send it to Kafka. You should see output similar to:
@@ -49,15 +55,9 @@ exit
 ```
 
 
-### 3. Verifying Recieved Messages
+### 4. Viewing Model Output
 
-To ensure nlp and consumer are correctly receiving and processing messages, check their logs:
-
-- To view nlp's logs, run the following command in the terminal:
-
-```bash
-docker-compose logs nlp
-```
+To view the output of the model, view consumer's logs:
 
 - To view consumer's logs, run the following command in the terminal:
 
