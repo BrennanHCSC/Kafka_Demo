@@ -10,7 +10,7 @@ Nlp and consumer are always listening.
 
 To download and correctly place the model file:
 - Go to [this link](https://huggingface.co/TheBloke/phi-2-GGUF/blob/main/phi-2.Q8_0.gguf) and download the model file 'phi-2.Q8_0.gguf'.
-- Put the file into [kafka auto flow LLM/nlp-service/](kafka auto flow LLM/nlp-service/) directory.
+- Put the file into [kafka auto flow LLM/nlp-service/](kafka%20auto%20flow%20LLM/nlp-service/) directory.
 
 
 ### 2. Build and Start the Docker Containers
