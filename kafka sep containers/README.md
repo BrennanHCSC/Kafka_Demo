@@ -17,7 +17,12 @@ To build and start the Docker containers, follow these steps:
 ```bash
 kubectl apply -f consumer-service.yaml,kafka-service.yaml,nlp-service.yaml,producer-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
 
+kubectl apply -f consumer-service.yaml,02-kafka.yaml,nlp-service.yaml,producer-service.yaml,01-zookeeper.yaml,consumer-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml
+
+kubectl delete -f consumer-service.yaml,02-kafka.yaml,nlp-service.yaml,producer-service.yaml,01-zookeeper.yaml,consumer-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml
+
 kubectl delete -f consumer-service.yaml,kafka-service.yaml,nlp-service.yaml,producer-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
+
 ```
 - Run the following command to see which containers are running:
 
@@ -32,7 +37,7 @@ Access the producer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-kubectl exec --stdin --tty < Producer name > -- /bin/bash 
+kubectl exec --stdin --tty producer-8496874bfb-vnnh2 -- /bin/bash 
 ```
 Inside the producer container's terminal:
 

@@ -10,9 +10,9 @@ metadata:
   name: producer
 spec:
   ports:
-    - name: "9091"
-      port: 9091
-      targetPort: 9091
+    - name: "9092"
+      port: 9092
+      targetPort: 9092
   selector:
     io.kompose.service: producer
 status:

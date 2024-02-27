@@ -1,9 +1,9 @@
-from kafka-cluster import Producer
+from kafka-broker import Producer
 import time
 
 # Configuration for connecting to Kafka
 config = {
-    'bootstrap.servers': 'kafka-cluster:9092'  # Assumes Kafka is accessible at this address
+    'bootstrap.servers': '127.0.0.1:9092'  # Assumes Kafka is accessible at this address
 }
 
 # Create a Producer instance

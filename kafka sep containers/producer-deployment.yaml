@@ -26,8 +26,11 @@ spec:
       containers:
         - image: kafkasepcontainers-producer
           name: producer
+          env:
+          - name: KAFKA_BOOTSTRAP
+            value: 127.0.0.1:9092
           ports:
-            - containerPort: 9091
+            - containerPort: 9092
           resources: {}
           tty: true
           imagePullPolicy: Never 
