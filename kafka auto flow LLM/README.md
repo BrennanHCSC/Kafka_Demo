@@ -1,8 +1,6 @@
 # Kafka Python Demo
 
-This branch automates the flow of messages from producer -> nlp -> consumer.
-Producer sents messages to Kafka (which is a command-line argument by the user). Nlp modifies the message by doing a simple NLP task (reversing the message string). Consumer simply recieves messages and logs them.
-Nlp and consumer are always listening.
+This branch is the same as [kafka auto flow](/kafka%20auto%20flow/), except instead of a simple nlp task, an LLM model is subbed in.
 
 ## Getting Started
 
