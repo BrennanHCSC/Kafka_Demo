@@ -64,3 +64,5 @@ To view the output of the model, view consumer's logs:
 ```bash
 docker-compose logs consumer
 ```
+
+- Note that the nlp has to load/infer from the model, which may take up to 2 minutes. Consumer logs may show 'Connection refused' until inference is complete.
