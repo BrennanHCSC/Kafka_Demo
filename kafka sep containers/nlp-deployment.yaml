@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.cmd: C:\windows\system32\kompose.exe convert -f docker-compose.yaml
     kompose.version: 1.26.0 (40646f47)
   creationTimestamp: null
   labels:
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yaml
+        kompose.cmd: C:\windows\system32\kompose.exe convert -f docker-compose.yaml
         kompose.version: 1.26.0 (40646f47)
       creationTimestamp: null
       labels:
@@ -26,10 +26,8 @@ spec:
       containers:
         - image: kafkasepcontainers-nlp
           name: nlp
-          ports:
-            - containerPort: 9095
           resources: {}
           tty: true
-          imagePullPolicy: Never 
+          imagePullPolicy: Never
       restartPolicy: Always
 status: {}

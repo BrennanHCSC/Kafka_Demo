@@ -12,7 +12,7 @@ def acked(err, msg):
 
 # Configuration for connecting to Kafka
 config = {
-    'bootstrap.servers': 'kafka:9092',  # Assumes Kafka is accessible at this address
+    'bootstrap.servers': 'kafka-cluster:9092',  # Assumes Kafka is accessible at this address
     'group.id': 'test-group',
     'auto.offset.reset': 'earliest'
 }
@@ -25,7 +25,7 @@ consumer.subscribe(['test-topic'])
 
 # Configuration for connecting to Kafka
 config_prod = {
-    'bootstrap.servers': 'kafka:9092'  # Assumes Kafka is accessible at this address
+    'bootstrap.servers': 'kafka-cluster:9092'  # Assumes Kafka is accessible at this address
 }
 
 # Create a Producer instance

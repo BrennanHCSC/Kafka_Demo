@@ -16,25 +16,19 @@ services:
       KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092, OUTSIDE://:9094 
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT, OUTSIDE:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
   producer:
      build: ./producer-service
      depends_on:
       - kafka-cluster
      tty: true
-     imagePullPolicy: Never 
   consumer:
      build: ./consumer-service 
      depends_on: 
-      - kafka-cluster   
+      - kafka-cluster  
      tty: true
-     ports:
-      - "9090:9090"
-     imagePullPolicy: Never
   nlp:
      build: ./nlp-service
      depends_on:
       - kafka-cluster
      tty: true
-     ports:
-      - "9095:9095"
-     imagePullPolicy: Never

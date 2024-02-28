@@ -2,7 +2,7 @@ from confluent_kafka import Consumer, KafkaError
 
 # Configuration for connecting to Kafka
 config = {
-    'bootstrap.servers': 'kafka:9092',  # Assumes Kafka is accessible at this address
+    'bootstrap.servers': 'kafka-cluster:9092',  # Assumes Kafka is accessible at this address
     'group.id': 'test-group',
     'auto.offset.reset': 'earliest'
 }

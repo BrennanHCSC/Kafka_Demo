@@ -15,14 +15,10 @@ To build and start the Docker containers, follow these steps:
 - Run the following command to build and start the containers:
 
 ```bash
-kubectl apply -f consumer-service.yaml,kafka-service.yaml,nlp-service.yaml,producer-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
 
-kubectl apply -f consumer-service.yaml,02-kafka.yaml,nlp-service.yaml,producer-service.yaml,01-zookeeper.yaml,consumer-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml
+kubectl apply -f kafka-cluster-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-cluster-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
 
-kubectl delete -f consumer-service.yaml,02-kafka.yaml,nlp-service.yaml,producer-service.yaml,01-zookeeper.yaml,consumer-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml
-
-kubectl delete -f consumer-service.yaml,kafka-service.yaml,nlp-service.yaml,producer-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
-
+kubectl delete -f kafka-cluster-service.yaml,zookeeper-service.yaml,consumer-deployment.yaml,kafka-cluster-deployment.yaml,nlp-deployment.yaml,producer-deployment.yaml,zookeeper-deployment.yaml
 ```
 - Run the following command to see which containers are running:
 
@@ -37,7 +33,9 @@ Access the producer container's terminal:
 - Run the following command in the terminal:
 
 ```bash
-kubectl exec --stdin --tty producer-8496874bfb-vnnh2 -- /bin/bash 
+kubectl exec --stdin --tty producer-97d55fdbb-f84dt -- /bin/bash 
+kubectl exec kafka-cluster-5555d8d6f9-wmbhn -- netstat -tulpn
+kubectl exec -it producer-97d55fdbb-dtt2d -- /bin/bash
 ```
 Inside the producer container's terminal:
 

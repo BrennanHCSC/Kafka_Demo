@@ -1,6 +1,6 @@
 FROM python:3.8-slim
 
-RUN pip install kafka-cluster 
+RUN pip install kafka
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
