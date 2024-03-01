@@ -80,7 +80,6 @@ services:
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     ports:
       - 9600:9600
-      - 12201:12201/udp
     depends_on:
       - elasticsearch
     

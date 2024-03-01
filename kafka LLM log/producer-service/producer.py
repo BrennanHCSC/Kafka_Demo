@@ -1,30 +1,32 @@
-from faker import Faker
-from kafka import KafkaProducer
-import json 
-import time 
+from confluent_kafka import Producer
+import time
+import sys  # Import the sys module to access command line arguments
 
-producer = KafkaProducer(
-    bootstrap_servers='kafka:9092',
-    value_serializer= lambda x: json.dumps(x).encode('utf-8')
-)
+# Configuration for connecting to Kafka
+config = {
+    'bootstrap.servers': 'kafka:9092'  # Assumes Kafka is accessible at this address
+}
 
+# Create a Producer instance
+producer = Producer(**config)
 
-fake = Faker()
-i =0
-while i < 10:
-    message= {
-        'name':fake.name(),
-        'city':fake.city(),
-        'phone':fake.phone_number()
-        }
-    key = 'message_update'.encode('utf-8')
+def acked(err, msg):
+    if err is not None:
+        print(f"Failed to deliver message: {err}")
+    else:
+        print(f"Message produced: {msg.topic()} [{msg.partition()}] @ {msg.offset()}")
 
+# Check if a message is provided as a command line argument
+if len(sys.argv) > 1:
+    message = sys.argv[1]
+else:
+    print("No message provided, defaulting to 'Hello, World!'")
+    message = "Hello, World!"
 
-    producer.send(
-        topic='new-updates',
-        key=key,
-        value=message
-    )
-    time.sleep(1)
-    i=i+1
+# Produce a message using the command line argument or default message
+producer.produce('test-topic', message, callback=acked)
 
+# Wait for any outstanding messages to be delivered
+producer.flush()
+
+print("LLM prompt sent to Kafka")
