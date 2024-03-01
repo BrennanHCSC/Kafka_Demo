@@ -1,0 +1,3 @@
+confluent-kafka
+llama-cpp-python
+numpy
