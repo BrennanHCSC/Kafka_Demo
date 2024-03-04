@@ -75,6 +75,19 @@ To view the logs:
 - Create index pattern with name 'nlp-topic'
 - Navigate to 'Discover' tab to see logs
 
+### 6. Push images to Azure Container Registry
+
+- Log in to Azure portal and "Create a resource"
+- Search for "Container Registry"
+- Choose subscription, resource group, and registry name; then create
+- Install Azure CLI on Windows
+- Log into Azure in PowerShell
+- Create an alias of the docker image, tagged with the Azure CR in cmd
+- Push the image to the registry in PowerShell
+
+https://medium.com/@marvinconejo/deploying-docker-containers-on-azure-a-step-by-step-guide-to-implementing-azure-container-2dca44893dc0
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli
+https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli?tabs=azure-cli
 
 ### Architecture
 ![data-pipeline-new (1)](https://github.com/ron-ait/Data-pipeline/assets/100356208/cb7fd9e3-a1ad-4fbe-ad67-318cb4c55963)
