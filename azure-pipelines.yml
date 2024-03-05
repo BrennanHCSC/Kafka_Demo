@@ -10,6 +10,8 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  azureContainerRegistry: Contoso.azurecr.io
+  azureSubscriptionEndpoint: Contoso
 
 stages:
 - stage: Build
@@ -27,3 +29,9 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/kafka LLM log/consumer-service/Dockerfile'
         tags: |
           $(tag)
+    - task: DockerCompose@0
+      displayName: Container registry login
+      inputs:
+        containerregistrytype: Azure Container Registry
+        azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+        azureContainerRegistry: $(azureContainerRegistry)
