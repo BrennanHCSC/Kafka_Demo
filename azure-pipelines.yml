@@ -10,8 +10,8 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  azureContainerRegistry: Contoso.azurecr.io
-  azureSubscriptionEndpoint: Contoso
+  azureContainerRegistry: ragdockertest.azurecr.io
+  azureSubscriptionEndpoint: HcSx-SP-RAGNalysis-JuniorMegalosaurus 
 
 stages:
 - stage: Build
