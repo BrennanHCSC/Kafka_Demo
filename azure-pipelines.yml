@@ -8,10 +8,12 @@ trigger:
 resources:
 - repo: self
 
-variables:
-  tag: '$(Build.BuildId)'
-  azureContainerRegistry: ragdockertest.azurecr.io
-  azureSubscriptionEndpoint: HcSx-SP-RAGNalysis-JuniorMegalosaurus 
+pool: HC-CDO Self-Hosted
+
+# variables:
+#   tag: '$(Build.BuildId)'
+#   azureContainerRegistry: ragdockertest.azurecr.io
+#   azureSubscriptionEndpoint: HcSx-SP-RAGNalysis-JuniorMegalosaurus 
 
 stages:
 - stage: Build
@@ -29,13 +31,13 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/kafka LLM log/consumer-service/Dockerfile'
         tags: |
           $(tag)
-    - task: DockerCompose@0
-      displayName: Build CI Containers
-      inputs:
-        action: Run A Docker Compose command
-        repository: 'RagNalysis-experiment'
-        dockerComposeFile: '$(Build.SourcesDirectory)/kafka_demo/docker-compose.yaml'
-        abortOnContainerExit: true
-        buildImages: true
-        dockerComposeCommand: -f '$(Build.SourcesDirectory)/kafka_demo/docker-compose.yaml' build
-        containerRegistry: 'ragdockertest'
+    # - task: DockerCompose@0
+    #   displayName: Build CI Containers
+    #   inputs:
+    #     action: Run A Docker Compose command
+    #     repository: 'RagNalysis-experiment'
+    #     dockerComposeFile: '$(Build.SourcesDirectory)/kafka_demo/docker-compose.yaml'
+    #     abortOnContainerExit: true
+    #     buildImages: true
+    #     dockerComposeCommand: -f '$(Build.SourcesDirectory)/kafka_demo/docker-compose.yaml' build
+    #     containerRegistry: 'ragdockertest'
