@@ -13,7 +13,7 @@ RUN pip install -r requirements.txt
 
 WORKDIR /app
 COPY nlp.py .
-COPY phi-2.Q8_0.gguf .
+COPY https://ragnalysis1408597387.file.core.windows.net/phimodel/phi-2.Q8_0.gguf .
 
 # Use CMD to run consumer.py automatically when the container starts
 CMD ["python", "./nlp.py"]

@@ -3,7 +3,7 @@ from confluent_kafka.admin import AdminClient, NewTopic
 from llama_cpp import Llama
 
 def llm_inference(prompt):
-    llm = Llama(model_path="./phi-2.Q8_0.gguf", chat_format="llama-2")
+    llm = Llama(model_path="https://ragnalysis1408597387.file.core.windows.net/phimodel/phi-2.Q8_0.gguf", chat_format="llama-2")
     output = llm.create_chat_completion(
     messages = [
         {
