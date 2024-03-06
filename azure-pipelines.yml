@@ -36,7 +36,7 @@ stages:
       displayName: Build CI Containers
       inputs:
         action: Run A Docker Compose command
-        dockerComposeFile: '$(Build.SourcesDirectory)/kafka LLM log/docker-compose.yml'
+        dockerComposeFile: '$(Build.SourcesDirectory)/kafka_demo/docker-compose.yaml'
         abortOnContainerExit: true
         buildImages: true
-        dockerComposeCommand: -f '$(Build.SourcesDirectory)/kafka LLM log/docker-compose.yaml' build
+        dockerComposeCommand: -f '$(Build.SourcesDirectory)/kafka_demo/docker-compose.yaml' build
