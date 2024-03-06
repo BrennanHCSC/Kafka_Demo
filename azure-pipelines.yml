@@ -29,8 +29,10 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/kafka LLM log/consumer-service/Dockerfile'
+        containerRegistry: 'RagnalysisExperimentContainerRegistry'
         tags: |
-          $(tag)
+          $(tagVersion)
+          $(tagDate)
     # - task: DockerCompose@0
     #   displayName: Build CI Containers
     #   inputs:
