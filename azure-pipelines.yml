@@ -35,8 +35,8 @@ stages:
     - task: DockerCompose@0
       displayName: Build CI Containers
       inputs:
-        action: Run A Docker Compose command
+        action: Build services
         dockerComposeFile: '$(Build.SourcesDirectory)/kafka LLM log/docker-compose.yml'
         containerregistrytype: Azure Container Registry
         azureContainerRegistry: 'RagnalysisExperimentContainerRegistry'
-        dockerComposeCommand: 'up -d'
+        # dockerComposeCommand: 'up -d'
